@@ -8,7 +8,9 @@ Group:		Development/Tools
 Source0:	http://kcachegrind.sourceforge.net/%{name}-%{version}.tar.gz
 # Source0-md5:	874e78af54a661495cbb29922133ab0f
 URL:		http://kcachegrind.sourceforge.net/cgi-bin/show.cgi
+BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel
+BuildRequires:	libart_lgpl-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 Requires:	binutils
@@ -40,7 +42,8 @@ echo "install:" >>doc/en/Makefile
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_appsdir=%{_applnkdir}
 
 %find_lang %{name}
 
@@ -52,5 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README README.KDE TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/apps/%{name}
-%{_iconsdir}/*
 %{_datadir}/mimelnk/application/*
+%{_iconsdir}/*/*/*/*.png
+%{_applnkdir}/Development/*.desktop
