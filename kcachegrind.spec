@@ -5,6 +5,7 @@ Release:	1
 License:	GPL
 Group:		Development/Tools
 Source0:	http://kcachegrind.sourceforge.net/%{name}-%{version}.tar.gz
+# Source0-md5:	874e78af54a661495cbb29922133ab0f
 URL:		http://kcachegrind.sourceforge.net/cgi-bin/show.cgi
 Requires:	binutils
 Requires:	graphviz
