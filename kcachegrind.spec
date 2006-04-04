@@ -1,12 +1,12 @@
 Summary:	The most beautiful way to optimize your applications
 Summary(pl):	Naj³adniejszy sposób optymalizowania aplikacji
 Name:		kcachegrind
-Version:	0.4.4
+Version:	0.4.6
 Release:	1
 License:	GPL
 Group:		Development/Tools
 Source0:	http://kcachegrind.sourceforge.net/%{name}-%{version}.tar.gz
-# Source0-md5:	874e78af54a661495cbb29922133ab0f
+# Source0-md5:	4ed60028dcefd6bf626635d5f2f50273
 URL:		http://kcachegrind.sourceforge.net/cgi-bin/show.cgi
 BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel
@@ -15,7 +15,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 Requires:	binutils
 Requires:	graphviz
-Requires:	valgrind-calltree
+Requires:	valgrind-callgrind
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -43,8 +43,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_appsdir=%{_applnkdir}
+	kde_appsdir=%{_desktopdir}
 
+mv -f $RPM_BUILD_ROOT{%{_applnkdir}/Development/*.desktop,%{_desktopdir}}
+rm -rf $RPM_BUILD_ROOT%{_applnkdir}/Development
 %find_lang %{name}
 
 %clean
@@ -57,4 +59,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/%{name}
 %{_datadir}/mimelnk/application/*
 %{_iconsdir}/*/*/*/*.png
-%{_applnkdir}/Development/*.desktop
+%{_desktopdir}/*.desktop
