@@ -1,5 +1,5 @@
 Summary:	The most beautiful way to optimize your applications
-Summary(pl.UTF-8):   Najładniejszy sposób optymalizowania aplikacji
+Summary(pl.UTF-8):	Najładniejszy sposób optymalizowania aplikacji
 Name:		kcachegrind
 Version:	0.4.6
 Release:	1
