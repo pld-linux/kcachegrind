@@ -15,7 +15,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 Requires:	binutils
 Requires:	graphviz
-Requires:	valgrind-callgrind
+Requires:	valgrind >= 3.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,8 +45,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_appsdir=%{_desktopdir}
 
-mv -f $RPM_BUILD_ROOT{%{_applnkdir}/Development/*.desktop,%{_desktopdir}}
-rm -rf $RPM_BUILD_ROOT%{_applnkdir}/Development
+mv -f $RPM_BUILD_ROOT{%{_desktopdir}/Development/*.desktop,%{_desktopdir}}
+rm -rf $RPM_BUILD_ROOT%{_desktopdir}/Development
 %find_lang %{name}
 
 %clean
