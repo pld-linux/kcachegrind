@@ -1,9 +1,11 @@
+# NOTE: this spec contains is the last version for KDE3.
+# for KDE4 version see kde4-kcachegrind.spec, for Qt4/Qt5 version see qcachegrind.spec.
 Summary:	The most beautiful way to optimize your applications
 Summary(pl.UTF-8):	Najładniejszy sposób optymalizowania aplikacji
 Name:		kcachegrind
 Version:	0.4.6
 Release:	1
-License:	GPL
+License:	GPL v2
 Group:		Development/Tools
 Source0:	http://kcachegrind.sourceforge.net/%{name}-%{version}.tar.gz
 # Source0-md5:	4ed60028dcefd6bf626635d5f2f50273
@@ -45,8 +47,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_appsdir=%{_desktopdir}
 
-mv -f $RPM_BUILD_ROOT{%{_desktopdir}/Development/*.desktop,%{_desktopdir}}
-rm -rf $RPM_BUILD_ROOT%{_desktopdir}/Development
+%{__mv} $RPM_BUILD_ROOT{%{_desktopdir}/Development/*.desktop,%{_desktopdir}}
+%{__rm} -r $RPM_BUILD_ROOT%{_desktopdir}/Development
 %find_lang %{name}
 
 %clean
@@ -55,8 +57,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README README.KDE TODO
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/dprof2cg
+%attr(755,root,root) %{_bindir}/hotshot2cg
+%attr(755,root,root) %{_bindir}/kcachegrind
+%attr(755,root,root) %{_bindir}/memprof2cg
+%attr(755,root,root) %{_bindir}/op2cg
+%attr(755,root,root) %{_bindir}/pfmon2cg
+%attr(755,root,root) %{_bindir}/pprof2cg
 %{_datadir}/apps/%{name}
-%{_datadir}/mimelnk/application/*
-%{_iconsdir}/*/*/*/*.png
-%{_desktopdir}/*.desktop
+%{_datadir}/mimelnk/application/x-kcachegrind.desktop
+%{_iconsdir}/hicolor/*x*/actions/fromrec.png
+%{_iconsdir}/hicolor/*x*/actions/percent.png
+%{_iconsdir}/hicolor/*x*/actions/recrec.png
+%{_iconsdir}/hicolor/*x*/actions/torec.png
+%{_desktopdir}/kcachegrind.desktop
